@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Countdown</title>
+    <title>Secret Countdown</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
-            padding: 50px;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #2c3e50;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
         }
         h1 {
-            font-size: 50px;
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
         #countdown {
-            font-size: 40px;
+            font-size: 36px;
             margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        #countdown span {
+            display: inline-block;
+            min-width: 70px;
+            font-weight: bold;
+        }
+        #countdown span:not(:last-child) {
+            margin-right: 15px;
         }
     </style>
 </head>
@@ -45,8 +67,11 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="countdown"
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
+            document.getElementById("countdown").innerHTML = 
+                "<span>" + days + "d</span>" + 
+                "<span>" + hours + "h</span>" + 
+                "<span>" + minutes + "m</span>" + 
+                "<span>" + seconds + "s</span>";
 
             // If the count down is finished, write some text
             if (distance < 0) {
